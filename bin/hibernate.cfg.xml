@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory>
+  <property name="hibernate.connection.driver_class">org.hsqldb.jdbcDriver</property>
+  <property name="hibernate.connection.url">jdbc:hsqldb:hsql://localhost:9001/GestionActivos</property>
+  <property name="hibernate.connection.username">SA</property>
+  <property name="hibernate.connection.password"/>
+  <property name="hibernate.default_catalog">public</property>
+  <property name="hibernate.dialect">org.hibernate.dialect.HSQLDialect</property>
+  <mapping resource="dominio/Accion.hbm.xml"/>
+  <mapping resource="dominio/Aplicacion.hbm.xml"/>
+  <mapping resource="dominio/ConfiguracionTipo.hbm.xml"/>
+  <mapping resource="dominio/Departamento.hbm.xml"/>
+  <mapping resource="dominio/DiscoMaster.hbm.xml"/>
+  <mapping resource="dominio/Dispositivo.hbm.xml"/>
+  <mapping resource="dominio/Empresa.hbm.xml"/>
+  <mapping resource="dominio/PersonaContacto.hbm.xml"/>
+  <mapping resource="dominio/SistemaOperativo.hbm.xml"/>
+ </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 17, 2012 3:28:17 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="dominio.Accion" table="ACCION">
+        <composite-id name="primaryKey">
+			<key-property name="numInventario" column="NUMINVENTARIO" />
+			<key-property name="numSecuencia" column="NUMSECUENCIA" />
+		</composite-id>
+        
+        <property name="fecha" type="java.util.Date" access="field">
+            <column name="FECHA" />
+        </property>
+        <property name="descripcion" type="java.lang.String">
+            <column name="DESCRIPCION" />
+        </property>
+        
+        <joined-subclass name="dominio.Baja" table="BAJA">
+        	<key>
+      			<column name="NUMINVENTARIO"/>
+      			<column name="NUMSECUENCIA"/>
+   			</key>
+        	
+        	<property name="fechaBaja" type="java.util.Date" access="field">
+         	   <column name="FECHABAJA" />
+       		</property>	
+        </joined-subclass>
+                
+        <joined-subclass name="dominio.Ampliacion" table="AMPLIACION">
+        	<key>
+      			<column name="NUMINVENTARIO"/>
+      			<column name="NUMSECUENCIA"/>
+   			</key>
+        	
+        	<property name="nuevaRam" type="int">
+         	   <column name="NUEVARAM" />
+       		</property>	
+       		
+        	<property name="nuevoProcesador" type="java.lang.String">
+         	   <column name="NUEVOPROCESADOR" />
+       		</property>	
+        </joined-subclass>
+        
+        <joined-subclass name="dominio.CambioDestino" table="CAMBIODESTINO">
+        	<key>
+      			<column name="NUMINVENTARIO"/>
+      			<column name="NUMSECUENCIA"/>
+   			</key>
+        	
+        	<property name="nuevaIp" type="java.lang.String">
+         	   <column name="NUEVAIP" />
+       		</property>	
+       		
+        	<many-to-one 
+        		name="contacto" 
+        		column="ID_PERSONA_CONTACTO" 
+        		not-null="true"/>
+        		        		
+        	<many-to-one 
+        		name="departamento" 
+        		column="CODIGO_DEPARTAMENTO" 
+        		not-null="true"/>
+        		
+        </joined-subclass>
+       		
+       	<joined-subclass name="dominio.Reparacion" table="REPARACION">
+    	   	<key>
+      			<column name="NUMINVENTARIO"/>
+      			<column name="NUMSECUENCIA"/>
+   			</key>
+        	
+        </joined-subclass>
+        
+        
+        
+    </class>
+</hibernate-mapping>

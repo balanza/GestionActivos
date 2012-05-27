@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 15, 2012 7:44:48 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="dominio.ConfiguracionTipo" table="CONFIGURACIONTIPO">
+        <id name="idConfiguracionTipo" type="java.lang.Long">
+            <column name="ID_CONFIGURACION_TIPO" />
+            <generator class="increment" />
+        </id>
+        
+      	<set name="ordenadores" 
+       		cascade="all" inverse="true"
+       		lazy="true" fetch="select">
+            <key>
+                <column name="ID_CONFIGURACION_TIPO" />
+            </key>
+            <one-to-many class="dominio.Ordenador" />
+        </set>
+        
+        <many-to-one 
+        	name="discoMaster" 
+        	column="ID_DISCO_MASTER" 
+        	not-null="true"/>
+        
+        <property name="marca" type="java.lang.String">
+            <column name="MARCA" />
+        </property>
+        
+        <property name="modelo" type="java.lang.String">
+            <column name="MODELO" />
+        </property>
+        
+        <property name="procesador" type="java.lang.String">
+            <column name="PROCESADOR" />
+        </property>
+        
+        <property name="ram" type="int">
+            <column name="RAM" />
+        </property>
+
+        
+    </class>
+</hibernate-mapping>

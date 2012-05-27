@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 15, 2012 7:44:48 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="dominio.DiscoMaster" table="DISCOMASTER">
+        <id name="idDiscoMaster" type="int">
+            <column name="ID_DISCO_MASTER" />
+            <generator class="increment" />
+        </id>
+        
+       <set name="configuraciones" 
+       		cascade="all" inverse="true"
+       		lazy="true" fetch="select">
+            <key>
+                <column name="ID_DISCO_MASTER" />
+            </key>
+            <one-to-many class="dominio.ConfiguracionTipo" />
+        </set>
+        
+        <property name="descripcion" type="java.lang.String">
+            <column name="DESCRIPTION" />
+        </property>
+        
+        <set name="sistemasOperativos" table="SISTEMAOPERATIVO_X_DISCOMASTER">
+			<key column="ID_DISCO_MASTER" />
+			<many-to-many column="ID_SISTEMA_OPERATIVO"
+				class="dominio.SistemaOperativo" />
+		</set>
+		
+		<set name="aplicaciones" table="APLICATION_X_DISCOMASTER">
+			<key column="ID_DISCO_MASTER" />
+			<many-to-many column="ID_APLICACION"
+				class="dominio.Aplicacion" />
+		</set>
+		
+	        
+        
+     
+    </class>
+</hibernate-mapping>

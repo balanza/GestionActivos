@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 29, 2012 12:24:05 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="dominio.Dispositivo" table="DISPOSITIVO">
+        <id name="numInventario" type="int">
+            <column name="NUMINVENTARIO" />
+            <generator class="increment" />
+        </id>
+        
+        <property name="numSerie" type="java.lang.String">
+            <column name="NUMSERIE" />
+        </property>
+        <property name="fechaInstalacion" type="java.lang.String">
+            <column name="FECHAINSTALACION" />
+        </property>
+        <property name="fechaFinGarantia" type="java.lang.String">
+            <column name="FECHAFINGARANTIA" />
+        </property>
+        <property name="fechaCompra" type="java.lang.String">
+            <column name="FECHACOMPRA" />
+        </property>
+        <!--property name="fechaBaja" type="java.util.Date">
+            <column name="FECHABAJA" />
+        </property -->
+        <property name="ip" type="java.lang.String">
+            <column name="IP" />
+        </property>
+        <property name="observaciones" type="java.lang.String">
+            <column name="OBSERVACIONES" />
+        </property>
+        <property name="precioCompra" type="float">
+            <column name="PRECIOCOMPRA" />
+        </property>
+        
+        
+        
+        <many-to-one name="departamento" column="DEPARTAMENTO_CODIGO" not-null="true" lazy="false">
+        </many-to-one>
+        <many-to-one name="personaContacto" column="PERSONACONTACTO_ID_PERSONA_CONTACTO" not-null="true" lazy="false">
+        </many-to-one>
+        <many-to-one name="empresa" column="ID_EMPRESA" not-null="true" lazy="false">
+        </many-to-one>
+        
+        <joined-subclass name="dominio.Impresora" table="IMPRESORA">
+        	<key column="NUMINVENTARIO"/>
+			<property name="marca" type="java.lang.String">
+        		<column name="MARCA" />
+        	</property>
+        	<property name="modelo" type="java.lang.String">
+        		<column name="MODELO" />
+        	</property>
+        </joined-subclass>
+        
+        
+        <joined-subclass name="dominio.Ordenador" table="ORDENADOR">
+        	<key column="NUMINVENTARIO"/>
+        	<property name="procesador" type="java.lang.String">
+        		<column name="PROCESADOR" />
+        	</property>
+        	<property name="ram" type="int">
+        		<column name="RAM" />
+        	</property>        
+        	<many-to-one name="configuracionTipo" class="dominio.ConfiguracionTipo" fetch="select">
+            	<column name="ID_CONFIGURACION_TIPO" not-null="true" />
+        	</many-to-one>	
+        	<set name="aplicaciones" table="instalacion">
+            	<key column="NUMINVENTARIO"/>
+            <many-to-many class="dominio.Aplicacion"/>
+        </set>
+        </joined-subclass>
+
+        
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 2, 2012 6:38:13 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="dominio.SistemaOperativo" table="SISTEMAOPERATIVO">
+        <id name="idSistemaOperativo" type="int">
+            <column name="ID_SISTEMA_OPERATIVO" />
+            <generator class="increment" />
+        </id>
+        
+                
+        <property name="descripcion" type="java.lang.String">
+            <column name="DESCRIPCION" />
+        </property>
+        
+        <property name="nombre" type="java.lang.String">
+            <column name="NOMBRE" />
+        </property>
+        
+        <property name="version" type="java.lang.String">
+            <column name="VERSION" />
+        </property>
+        
+        <set name="discos" table="SISTEMAOPERATIVO_X_DISCOMASTER" inverse="true">
+			<key column="ID_SISTEMA_OPERATIVO" />
+			<many-to-many column="ID_DISCO_MASTER"
+				class="dominio.DiscoMaster" />
+		</set>
+        
+    </class>
+</hibernate-mapping>

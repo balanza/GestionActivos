@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 2, 2012 6:38:13 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="dominio.PersonaContacto" table="PERSONACONTACTO">
+        <id name="id" type="int">
+            <column name="ID_PERSONA_CONTACTO" />
+            <generator class="increment" />
+        </id>
+        
+        <set name="dispositivos" cascade="all" inverse="true">
+             <key column="PERSONACONTACTO_ID_PERSONA_CONTACTO"/>
+             <one-to-many class="dominio.Dispositivo"/>
+        </set>
+        
+        <property name="nombre" type="java.lang.String">
+            <column name="NOMBRE" />
+        </property>
+        <property name="telefono" type="java.lang.String">
+            <column name="TELEFONO" />
+        </property>
+    </class>
+</hibernate-mapping>

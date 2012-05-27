@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 1, 2012 3:22:22 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+ <class entity-name="dominio.Empresa" name="dominio.Empresa" table="EMPRESA">
+  <id name="id" type="int">
+   <column name="ID_EMPRESA"/>
+   <generator class="increment"/>
+  </id>
+  
+	<set name="dispositivos" cascade="all" inverse="true">
+    	<key column="ID_EMPRESA"/>
+        <one-to-many class="dominio.Dispositivo"/>
+    </set>
+  
+  <property generated="never" lazy="false" name="nombre" type="java.lang.String">
+   <column name="NOMBRE"/>
+  </property>
+  <property generated="never" lazy="false" name="direccion" type="java.lang.String">
+   <column name="DIRECCION"/>
+  </property>
+  <property generated="never" lazy="false" name="telefono" type="java.lang.String">
+   <column name="TELEFONO"/>
+  </property>
+  <property generated="never" lazy="false" name="email" type="java.lang.String">
+   <column name="EMAIL"/>
+  </property>
+  <property generated="never" lazy="false" name="poblacion" type="java.lang.String">
+   <column name="POBLACION"/>
+  </property>
+ </class>
+</hibernate-mapping>

@@ -1,0 +1,4 @@
+* Campi autoincrement nel db, controllare
+* FK_PRIORIDAD, controllare
+* aggiungere le tavole derivate di ACCION
+* aggiungere le relazioni nelle entity
