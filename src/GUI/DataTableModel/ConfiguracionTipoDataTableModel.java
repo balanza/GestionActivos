@@ -18,9 +18,9 @@ public class ConfiguracionTipoDataTableModel extends abstractDataTableModel<Conf
 		@SuppressWarnings("rawtypes")
 		Vector<Object> row = new Vector<Object>();
 		row.add(app.getIdConfiguracionTipo());
-		row.add(app.getMarca());
-		row.add(app.getModelo());
-		row.add(app.getProcesador());
+		row.add(app.getMarca().trim());
+		row.add(app.getModelo().trim());
+		row.add(app.getProcesador().trim());
 		row.add(app.getRam());
 		row.add( app.getDiscoMaster());
 		
@@ -45,8 +45,9 @@ public class ConfiguracionTipoDataTableModel extends abstractDataTableModel<Conf
 
 			e.setMarca((String)getValueAt(row, 1));
 			e.setModelo((String)getValueAt(row, 2));
-			e.setProcesador((String)getValueAt(row, 3));
-			e.setRam((Integer)getValueAt(row, 4));
+			e.setProcesador((String)getValueAt(row, 3));			
+			e.setRam( (Integer) getValueAt(row, 4));
+			e.setDiscoMaster((DiscoMaster) getValueAt(row, 5));
 			//TODO: typecheck
 		}
 		

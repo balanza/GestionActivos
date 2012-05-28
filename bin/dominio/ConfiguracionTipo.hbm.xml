@@ -4,14 +4,14 @@
 <!-- Generated May 15, 2012 7:44:48 PM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="dominio.ConfiguracionTipo" table="CONFIGURACIONTIPO">
-        <id name="idConfiguracionTipo" type="java.lang.Long">
+        <id name="idConfiguracionTipo" type="int">
             <column name="ID_CONFIGURACION_TIPO" />
             <generator class="increment" />
         </id>
         
       	<set name="ordenadores" 
        		cascade="all" inverse="true"
-       		lazy="true" fetch="select">
+       		lazy="false" fetch="select">
             <key>
                 <column name="ID_CONFIGURACION_TIPO" />
             </key>
@@ -21,7 +21,8 @@
         <many-to-one 
         	name="discoMaster" 
         	column="ID_DISCO_MASTER" 
-        	not-null="true"/>
+        	not-null="true"
+        	lazy="false"/>
         
         <property name="marca" type="java.lang.String">
             <column name="MARCA" />

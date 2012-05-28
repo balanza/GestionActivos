@@ -70,9 +70,13 @@ public class DiscoMaster implements IEntity {
 
 	@Override
 	public String getLabel() {
-		return  getIdDiscoMaster() + "";
+		return  toString();
 	}
 	
+	@Override 
+	public String toString() {
+		return  getIdDiscoMaster() + "";
+	}
 	
 }
 

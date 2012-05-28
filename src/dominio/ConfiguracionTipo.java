@@ -36,7 +36,7 @@ public class ConfiguracionTipo implements IEntity{
 	}	
 
 	public String getMarca(){
-		return marca;		
+		return marca.trim();		
 	}
 	
 	public void setMarca(String marca){
@@ -44,7 +44,7 @@ public class ConfiguracionTipo implements IEntity{
 	}
 
 	public String getModelo(){
-		return modelo;		
+		return modelo.trim();		
 	}
 	
 	public void setModelo(String modelo){
@@ -83,7 +83,12 @@ public class ConfiguracionTipo implements IEntity{
 
 
 	@Override
-	public String getLabel() {
+	public String getLabel(){
+		return toString();		
+	}
+	
+	@Override
+	public String toString() {
 		return getMarca() + " " + getModelo() + " (" + getProcesador() + ")";   
 	}
 	

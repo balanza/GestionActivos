@@ -10,14 +10,14 @@ import persistence.IEntity;
 public abstract class Dispositivo implements IEntity {
 	
 	int numInventario;
-	String numSerie;
-	String fechaInstalacion;
-	String fechaFinGarantia;
-	String fechaCompra;
+	String numSerie = "";
+	Date fechaInstalacion;
+	Date fechaFinGarantia;
+	Date fechaCompra;
 	int prioridad;
 	Date fechaBaja;
-	String ip;
-	String observaciones;
+	String ip = "";
+	String observaciones = "";
 	float precioCompra;
 	PersonaContacto personaContacto;
 	Departamento departamento;
@@ -41,27 +41,27 @@ public abstract class Dispositivo implements IEntity {
 		numSerie = n;
 	}
 	
-	public String getFechaInstalacion(){
+	public Date getFechaInstalacion(){
 		return fechaInstalacion;
 	}
 	
-	public void setFechaInstalacion(String d){
+	public void setFechaInstalacion(Date d){
 		fechaInstalacion = d;
 	}
 
-	public String getFechaFinGarantia(){
+	public Date getFechaFinGarantia(){
 		return fechaFinGarantia;
 	}
 	
-	public void setFechaFinGarantia(String d){
+	public void setFechaFinGarantia(Date d){
 		fechaFinGarantia = d;
 	}
-	public String getFechaCompra(){
+	public Date getFechaCompra(){
 		return fechaCompra;
 	}
 	
 	@SuppressWarnings("deprecation")
-	public void setFechaCompra(String d){
+	public void setFechaCompra(Date d){
 		fechaCompra = d;
 	}
 	
@@ -74,18 +74,24 @@ public abstract class Dispositivo implements IEntity {
 	}
 	
 	public String getIp(){
-		return ip;
+		return ip.trim();
 	}
 	
 	public void setIp(String n){
+		if(n == null){
+			n = "";
+		}
 		ip = n;
 	}
 	
 	public String getObservaciones(){
-		return observaciones;
+		return observaciones.trim();
 	}
 	
 	public void setObservaciones(String n){
+		if(n == null){
+			n = "";
+		}
 		observaciones = n;
 	}
 	

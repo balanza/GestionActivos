@@ -11,7 +11,7 @@
         
        <set name="configuraciones" 
        		cascade="all" inverse="true"
-       		lazy="true" fetch="select">
+       		lazy="false" fetch="select">
             <key>
                 <column name="ID_DISCO_MASTER" />
             </key>
@@ -22,13 +22,13 @@
             <column name="DESCRIPTION" />
         </property>
         
-        <set name="sistemasOperativos" table="SISTEMAOPERATIVO_X_DISCOMASTER">
+        <set name="sistemasOperativos" table="SISTEMAOPERATIVO_X_DISCOMASTER" lazy="false">
 			<key column="ID_DISCO_MASTER" />
 			<many-to-many column="ID_SISTEMA_OPERATIVO"
 				class="dominio.SistemaOperativo" />
 		</set>
 		
-		<set name="aplicaciones" table="APLICATION_X_DISCOMASTER">
+		<set name="aplicaciones" table="APLICATION_X_DISCOMASTER" lazy="false">
 			<key column="ID_DISCO_MASTER" />
 			<many-to-many column="ID_APLICACION"
 				class="dominio.Aplicacion" />

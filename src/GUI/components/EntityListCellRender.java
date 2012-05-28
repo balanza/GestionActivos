@@ -13,7 +13,7 @@ public class EntityListCellRender implements ListCellRenderer {
 	@Override
 	public Component getListCellRendererComponent(JList arg0, Object arg1,
 			int arg2, boolean arg3, boolean arg4) {
-		return new JLabel(((IEntity)arg1).getLabel());
+		return new JLabel(((IEntity)arg1).getLabel().trim());
 	}
 
 }

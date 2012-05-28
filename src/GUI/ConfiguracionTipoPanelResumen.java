@@ -21,9 +21,7 @@ public class ConfiguracionTipoPanelResumen extends PanelResumen<ConfiguracionTip
 	@Override
 	protected void setRenders(){
 		try {
-			datatable.getColumnModel()
-				.getColumn(5)
-				.setCellEditor(new EntitySingleSelectorCellEditor<DiscoMaster>(new DiscoMasterDAO()));
+			datatable.getColumnModel().getColumn(5).setCellEditor(new EntitySingleSelectorCellEditor<DiscoMaster>(new DiscoMasterDAO()));
 		} catch (InstantiationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

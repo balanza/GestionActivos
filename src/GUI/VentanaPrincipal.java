@@ -12,9 +12,10 @@ import org.jdesktop.application.Application;
 
 import dominio.*;
 
+import DAO.AccionDAO;
+import DAO.DispositivoDAO;
 import GUI.DataTableModel.*;
 
-import javax.swing.SwingUtilities;
 import javax.swing.*;
 
 
@@ -33,6 +34,10 @@ import javax.swing.*;
 public class VentanaPrincipal extends JFrame {
 	private JMenuBar jMenuBar1;
 	private JMenuItem ordenadoresListMenuItem;
+	private JMenuItem ordenadoresInstalacionMenuItem;
+	private JMenuItem ordenadoresBajaMenuItem;
+	private JMenuItem ordenadoresReparacionMenuItem;
+	private JMenuItem ordenadoresCambioDestinoMenuItem;
 	private JMenu empresasMenu;
 	private JMenuItem empresasListMenuItem;
 	private JMenu impresorasMenu;
@@ -47,6 +52,8 @@ public class VentanaPrincipal extends JFrame {
 	private JMenuItem configuracionListMenuItem;
 	private JMenu discoMenu;
 	private JMenuItem discoListMenuItem;
+	private JMenu osMenu;
+	private JMenuItem osListMenuItem;
 	private JPanel contentPanel;
 	private JMenu ordenadoresMenu;
 
@@ -79,9 +86,28 @@ public class VentanaPrincipal extends JFrame {
 									//load a resume frame into the content panel
 							try{
 								
-									PanelResumen<Ordenador> v = new PanelResumen(new OrdenadorDataTableModel());
+									OrdenadorPanelResumen v = new OrdenadorPanelResumen();
 									switchPanel(v);
 									setTitle("Ordenadores");
+							} catch(Exception ex){
+								ex.printStackTrace();
+							} 
+							}
+						});
+					
+					}
+					{
+						ordenadoresBajaMenuItem = new JMenuItem("baja");
+						ordenadoresMenu.add(ordenadoresBajaMenuItem);
+						ordenadoresBajaMenuItem.setName("ordenadoresBajaMenu");
+						ordenadoresBajaMenuItem.addActionListener(new java.awt.event.ActionListener() {
+						public void actionPerformed(java.awt.event.ActionEvent e){
+									//load a resume frame into the content panel
+							try{
+								
+									AccionBajaPanelResumen  v = new AccionBajaPanelResumen(new DispositivoDAO());
+									switchPanel(v);
+									setTitle("Bajas de dispositivos");
 							} catch(Exception ex){
 								ex.printStackTrace();
 							} 
@@ -146,7 +172,7 @@ public class VentanaPrincipal extends JFrame {
 					}
 				}
 				{
-					contactoMenu = new JMenu("contactos");
+					contactoMenu = new JMenu("Contactos");
 					jMenuBar1.add(contactoMenu);
 					
 					{
@@ -165,7 +191,7 @@ public class VentanaPrincipal extends JFrame {
 					}
 				}
 				{
-					aplicacionMenu = new JMenu("aplicaciones");
+					aplicacionMenu = new JMenu("Aplicaciones");
 					jMenuBar1.add(aplicacionMenu);
 					
 					{
@@ -184,7 +210,7 @@ public class VentanaPrincipal extends JFrame {
 					}
 				}
 				{
-					configuracionMenu = new JMenu("configuraciones");
+					configuracionMenu = new JMenu("Configuraciones");
 					jMenuBar1.add(configuracionMenu);
 					
 					{
@@ -203,7 +229,7 @@ public class VentanaPrincipal extends JFrame {
 					}
 				}
 				{
-					discoMenu = new JMenu("discoes");
+					discoMenu = new JMenu("Discos");
 					jMenuBar1.add(discoMenu);
 					
 					{
@@ -216,6 +242,25 @@ public class VentanaPrincipal extends JFrame {
 								DiscoMasterPanelResumen v = new DiscoMasterPanelResumen();
 									switchPanel(v);
 									setTitle("disco");
+									
+							}
+						});
+					}
+				}
+				{
+					osMenu = new JMenu("Sistemas");
+					jMenuBar1.add(osMenu);
+					
+					{
+						osListMenuItem = new JMenuItem("lista");
+						osMenu.add(osListMenuItem);
+						osListMenuItem.setName("osListMenuItem");
+						osListMenuItem.addActionListener(new java.awt.event.ActionListener() {
+							public void actionPerformed(java.awt.event.ActionEvent e){
+									//load a resume frame into the content panel
+									PanelResumen<SistemaOperativo> v = new PanelResumen<SistemaOperativo>(new SistemaOperativoDataTableModel());
+									switchPanel(v);
+									setTitle("Sistemas Operativos");
 									
 							}
 						});

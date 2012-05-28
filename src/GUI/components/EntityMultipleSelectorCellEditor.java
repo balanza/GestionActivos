@@ -1,42 +1,32 @@
 package GUI.components;
 
 import java.awt.Component;
+import java.util.*;
 
 import javax.swing.AbstractCellEditor;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.TableCellEditor;
 
+
 import DAO.abstractDAO;
-import GUI.VentanaDualList;
 import GUI.DataTableModel.SortedListModel;
 
 public class EntityMultipleSelectorCellEditor<T> extends AbstractCellEditor
 		implements TableCellEditor {
 	
-	private JButton component;
-	private VentanaDualList<T> ventana;
-	public abstractDAO<T> dao;
+	private EntityMultipleSelector<T> popup;
+	private abstractDAO<T> dao;
 	
-	public EntityMultipleSelectorCellEditor(abstractDAO<T> dao, SortedListModel initial) throws InstantiationException, IllegalAccessException{
-		component = new JButton();
-		ventana = new VentanaDualList<T>(dao, initial);
-		component.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent e){
-				ventana.setLocationRelativeTo(null);
-				ventana.setVisible(true);	
-				
-			}
-		});
-		
-		setText(initial.getSize() + " elementos");
+	public EntityMultipleSelectorCellEditor(abstractDAO<T> dao) throws InstantiationException, IllegalAccessException {
+
+		this.dao = dao;
+		popup = new EntityMultipleSelector(dao, new SortedListModel());
 	}
 	@Override
 	public Object getCellEditorValue() {
 		// TODO Auto-generated method stub
-		return ventana.getSelectedList();
+		return popup.getSelectedList();
 	}
 
 	@Override
@@ -44,14 +34,32 @@ public class EntityMultipleSelectorCellEditor<T> extends AbstractCellEditor
 			boolean isSelected, int row, int column) {
 		
 		table.setValueAt(value, row, column);
-		return component;
+		
+		SortedListModel slm = new SortedListModel();
+		if(value != null){
+			for(Object o: (Set)value){
+				slm.add(o);
+			}			
+		}
+		
+		try {
+			popup = new EntityMultipleSelector(dao, slm);
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		popup.setLocationRelativeTo(null);
+		popup.setVisible(true);
+		
+		return new JLabel("...");
 		
 	}
 	
 	
-	public void setText(String text){
-		component.setText(text);
-	}
 
 }
 

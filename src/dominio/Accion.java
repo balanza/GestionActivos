@@ -2,7 +2,11 @@ package dominio;
 
 import java.util.Date;
 
-public abstract class Accion {
+import DAO.DispositivoDAO;
+
+import persistence.IEntity;
+
+public abstract class Accion{
 	
 	private AccionPK primaryKey;
 	private Date fecha;
@@ -27,7 +31,7 @@ public abstract class Accion {
 		return fecha;		
 	}
 	
-	public void setFecia(Date fecha){
+	public void setFecha(Date fecha){
 		this.fecha = fecha;
 	}
 
@@ -45,6 +49,15 @@ public abstract class Accion {
 	
 	public void setOrdenador(Ordenador ordenador){
 		this.ordenador = ordenador;
+	}
+	
+	public Dispositivo getDispositivo(){
+		try{
+			DispositivoDAO<Dispositivo> dao = new DispositivoDAO<Dispositivo>();
+			return dao.find(getPrimaryKey().getNumInventario());
+		} catch(Exception e){
+			return null;
+		}		
 	}
 	
 

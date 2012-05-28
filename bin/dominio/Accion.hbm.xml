@@ -16,7 +16,7 @@
             <column name="DESCRIPCION" />
         </property>
         
-        <joined-subclass name="dominio.Baja" table="BAJA">
+        <joined-subclass name="dominio.AccionBaja" table="BAJA">
         	<key>
       			<column name="NUMINVENTARIO"/>
       			<column name="NUMSECUENCIA"/>

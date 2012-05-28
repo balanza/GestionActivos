@@ -241,6 +241,12 @@ public class DualListBox extends JPanel {
         GridBagConstraints.NONE, EMPTY_INSETS, 0, 0));
     add(new JScrollPane(destList), new GridBagConstraints(2, 1, 1, 5, .5, 1.0,
         GridBagConstraints.CENTER, GridBagConstraints.BOTH, EMPTY_INSETS, 0, 0));
+    
+    int width = Math.max(destList.getSize().width, sourceList.getSize().width);
+    int height = Math.max(destList.getSize().height, sourceList.getSize().height);
+    destList.setSize(width, height);
+    sourceList.setSize(width, height);
+    
     Application.getInstance().getContext().getResourceMap(getClass()).injectComponents(this);
   }
 

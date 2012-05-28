@@ -81,9 +81,9 @@ public class ImpresoraDataTableModel extends DispositivoDataTableModel<Impresora
             }
 			
 			e.setNumSerie((String)getValueAt(row, 4));
-			e.setFechaCompra((String)getValueAt(row, 5));
-			e.setFechaFinGarantia((String)getValueAt(row, 6));
-			e.setFechaInstalacion((String)getValueAt(row, 7));
+			e.setFechaCompra((Date)getValueAt(row, 5));
+			e.setFechaFinGarantia((Date)getValueAt(row, 6));
+			e.setFechaInstalacion((Date)getValueAt(row, 7));
 			e.setIp((String)getValueAt(row, 8));
 			
 			e.setMarca((String)getValueAt(row, 9));

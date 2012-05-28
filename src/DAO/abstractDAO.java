@@ -5,6 +5,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.Query;
 
+import dominio.AccionBaja;
+
 import persistence.UtilityHibernate;
 
 import java.util.List;
@@ -54,6 +56,7 @@ public abstract class abstractDAO<T> {
 
 		session.close();    	
     }
+    
     
     public void save(T obj) { //to be split
         try {
@@ -171,6 +174,11 @@ public abstract class abstractDAO<T> {
         	}        	
         }
     }
+
+
+
+
+
 
 
 }

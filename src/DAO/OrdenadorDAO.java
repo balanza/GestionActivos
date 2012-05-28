@@ -33,8 +33,11 @@ public class OrdenadorDAO extends DispositivoDAO<Ordenador> {
 		
 		
 		//copiar datos configuracion
+		
 		o.setRam(conf.getRam());
-		o.setProcesador(conf.getProcesador());
+		String proc = conf.getProcesador();
+		o.setProcesador(proc);
+		
 		
 		
 		//instalar aplicaciones
@@ -47,7 +50,7 @@ public class OrdenadorDAO extends DispositivoDAO<Ordenador> {
 		
 
 		//insert dispositivo
-		super.create(o);
+		super.save(o);
 	}
 
 }

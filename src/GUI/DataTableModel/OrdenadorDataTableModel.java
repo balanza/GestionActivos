@@ -17,8 +17,8 @@ import DAO.OrdenadorDAO;
 public class OrdenadorDataTableModel extends DispositivoDataTableModel<Ordenador> {
 
 	public OrdenadorDataTableModel(){
-		super( new String[]{});
-		dao = new OrdenadorDAO();//new ImpresoraDAO();
+		super( new String[]{"CONFIGURACION","APLICACIONES"});
+		dao = new OrdenadorDAO();
 	}
 	
 
@@ -40,6 +40,8 @@ public class OrdenadorDataTableModel extends DispositivoDataTableModel<Ordenador
 		row.add(o.getFechaFinGarantia());
 		row.add(o.getFechaInstalacion());
 		row.add(o.getIp());
+		row.add(o.getConfiguracionTipo());		
+		row.add(o.getAplicaciones());
 		
 		session.close();
 		
@@ -79,10 +81,12 @@ public class OrdenadorDataTableModel extends DispositivoDataTableModel<Ordenador
             }
 			
 			e.setNumSerie((String)getValueAt(row, 4));
-			e.setFechaCompra((String)getValueAt(row, 5));
-			e.setFechaFinGarantia((String)getValueAt(row, 6));
-			e.setFechaInstalacion((String)getValueAt(row, 7));
+			e.setFechaCompra((Date)getValueAt(row, 5));
+			e.setFechaFinGarantia((Date)getValueAt(row, 6));
+			e.setFechaInstalacion((Date)getValueAt(row, 7));
 			e.setIp((String)getValueAt(row, 8));
+			e.setConfiguracionTipo((ConfiguracionTipo)getValueAt(row, 9));
+			e.setAplicaciones((Set<Aplicacion>)getValueAt(row, 10));
 			
 		}
 		

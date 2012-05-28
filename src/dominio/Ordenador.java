@@ -10,11 +10,13 @@ public class Ordenador extends Dispositivo{
 	private int ram = -1;
 	private String procesador;
 	private ConfiguracionTipo configuracion;
-	private Set<Aplicacion> aplicaciones = new HashSet<Aplicacion>();
+	private Set<Aplicacion> aplicaciones;
 	
 	
 	
-	public Ordenador(){}
+	public Ordenador(){
+		aplicaciones = new HashSet<Aplicacion>();
+	}
 		
 	public int getRam() {
 		if(ram == -1 && configuracion != null){
@@ -47,17 +49,12 @@ public class Ordenador extends Dispositivo{
 	@Override
 	public String getMarca() {
 		if(configuracion != null){
-			return configuracion.getMarca();
+			return configuracion.getMarca().trim();
 		} else {
 			return "";
 		}
 	}
 
-	@Override
-	public void setMarca(String m) {
-		// TODO derivare da ConfiguracionTipo
-		
-	}
 
 	@Override
 	public String getModelo() {
@@ -83,6 +80,9 @@ public class Ordenador extends Dispositivo{
 	}
 	
 	public Set<Aplicacion> getAplicaciones(){
+		if(aplicaciones == null){
+			aplicaciones = new HashSet<Aplicacion>();
+		}
 		return aplicaciones;
 	}
 	

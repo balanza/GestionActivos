@@ -5,10 +5,11 @@ import java.util.List;
 import org.hibernate.HibernateException;
 
 import dominio.Dispositivo;
+import dominio.Ordenador;
 
 
 
-public abstract class DispositivoDAO<T> extends abstractDAO<T> {
+public class DispositivoDAO<T> extends abstractDAO<T> {
 
 	
 
@@ -44,6 +45,16 @@ public abstract class DispositivoDAO<T> extends abstractDAO<T> {
             handleException(e);
         } 
 		
+	}
+
+	@Override
+	public T find(Integer id) {
+		return find(Dispositivo.class, id);
+	}
+
+	@Override
+	public List<T> findAll() {
+		return findAll(Dispositivo.class);
 	}
 
 	

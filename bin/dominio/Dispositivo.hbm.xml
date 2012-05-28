@@ -12,18 +12,16 @@
         <property name="numSerie" type="java.lang.String">
             <column name="NUMSERIE" />
         </property>
-        <property name="fechaInstalacion" type="java.lang.String">
+        <property name="fechaInstalacion" type="java.util.Date">
             <column name="FECHAINSTALACION" />
         </property>
-        <property name="fechaFinGarantia" type="java.lang.String">
+        <property name="fechaFinGarantia" type="java.util.Date">
             <column name="FECHAFINGARANTIA" />
         </property>
-        <property name="fechaCompra" type="java.lang.String">
+        <property name="fechaCompra" type="java.util.Date">
             <column name="FECHACOMPRA" />
         </property>
-        <!--property name="fechaBaja" type="java.util.Date">
-            <column name="FECHABAJA" />
-        </property -->
+
         <property name="ip" type="java.lang.String">
             <column name="IP" />
         </property>
@@ -62,13 +60,13 @@
         	<property name="ram" type="int">
         		<column name="RAM" />
         	</property>        
-        	<many-to-one name="configuracionTipo" class="dominio.ConfiguracionTipo" fetch="select">
+        	<many-to-one name="configuracionTipo" class="dominio.ConfiguracionTipo" fetch="select" lazy="false">
             	<column name="ID_CONFIGURACION_TIPO" not-null="true" />
         	</many-to-one>	
-        	<set name="aplicaciones" table="instalacion">
+        	<set name="aplicaciones" table="INSTALACION" lazy="false">
             	<key column="NUMINVENTARIO"/>
-            <many-to-many class="dominio.Aplicacion"/>
-        </set>
+            	<many-to-many column="ID_APLICACION" class="dominio.Aplicacion"/>
+        	</set>
         </joined-subclass>
 
         

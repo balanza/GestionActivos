@@ -25,7 +25,7 @@ public class CalendarCellEditor extends AbstractCellEditor
 	@Override
 	public Object getCellEditorValue() {
 		// TODO Auto-generated method stub
-		return component.getDate().toString();
+		return component.getDate();
 	}
 
 	@SuppressWarnings("deprecation")

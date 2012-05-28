@@ -27,6 +27,7 @@ import javax.swing.SwingUtilities;
 import DAO.DepartamentoDAO;
 import DAO.EmpresaDAO;
 import DAO.PersonaContactoDAO;
+import DAO.abstractDAO;
 import GUI.DataTableModel.DispositivoDataTableModel;
 import GUI.DataTableModel.EmpresaDataTableModel;
 import GUI.DataTableModel.ImpresoraDataTableModel;
@@ -61,12 +62,20 @@ public class PanelResumen<T> extends PanelData<T> {
 	private JButton saveAllButton;
 	private JButton delButton;
 	private JButton refreshButton;
+	private abstractDAO dao;
 
 		
 
 	
+	public PanelResumen(abstractDataTableModel<T> tm, abstractDAO dao) {
+		super(tm);
+		this.dao = dao;
+		initGUI();
+	}
+
 	public PanelResumen(abstractDataTableModel<T> tm) {
 		super(tm);
+		this.dao = null;
 		initGUI();
 	}
 	

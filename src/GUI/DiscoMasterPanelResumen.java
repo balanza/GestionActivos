@@ -16,6 +16,7 @@ import GUI.DataTableModel.SortedListModel;
 import GUI.DataTableModel.abstractDataTableModel;
 import GUI.components.CalendarCellEditor;
 import GUI.components.EntityMultipleSelectorCellEditor;
+import GUI.components.EntityMultipleSelectorCellRenderer;
 import GUI.components.EntitySingleSelectorCellEditor;
 
 public class DiscoMasterPanelResumen extends PanelResumen<DiscoMaster> {
@@ -27,8 +28,10 @@ public class DiscoMasterPanelResumen extends PanelResumen<DiscoMaster> {
 	@Override
 	protected void setRenders(){
 		try {
-			datatable.getColumnModel().getColumn(1).setCellEditor(new EntityMultipleSelectorCellEditor<SistemaOperativo>(new SistemaOperativoDAO(), new SortedListModel()));
-			datatable.getColumnModel().getColumn(2).setCellEditor(new EntityMultipleSelectorCellEditor<Aplicacion>(new AplicacionDAO(), new SortedListModel()));
+			datatable.getColumnModel().getColumn(1).setCellEditor(new EntityMultipleSelectorCellEditor<SistemaOperativo>(new SistemaOperativoDAO()));
+			datatable.getColumnModel().getColumn(1).setCellRenderer(new EntityMultipleSelectorCellRenderer());
+			datatable.getColumnModel().getColumn(2).setCellEditor(new EntityMultipleSelectorCellEditor<Aplicacion>(new AplicacionDAO()));
+			datatable.getColumnModel().getColumn(2).setCellRenderer(new EntityMultipleSelectorCellRenderer());
 		} catch (InstantiationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
