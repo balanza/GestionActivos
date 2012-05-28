@@ -7,11 +7,11 @@ import javax.jws.HandlerChain;
 import dominio.*;
 
 
-public class AccionBajaDAO extends abstractDAO<AccionBaja> {
+public class AccionBajaDAO extends AccionDAO<AccionBaja>{//abstractDAO<AccionBaja> {
 
 	@Override
 	public AccionBaja find(Integer id) {
-		return find(AccionBaja.class, id);
+		return (AccionBaja) find(AccionBaja.class, id);
 	}
 
 	@Override
@@ -21,7 +21,7 @@ public class AccionBajaDAO extends abstractDAO<AccionBaja> {
 	
 	public void save (AccionBaja accion){
 				
-		accion.getDispositivo().setFechaBaja(accion.getFechaBaja());
+		//accion.getDispositivo().setFechaBaja(accion.getFechaBaja());
 		
 		super.save(accion);
 		

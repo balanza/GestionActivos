@@ -12,6 +12,8 @@ public class AccionPK implements Serializable {
 		setNumSecuencia(numSecuencia);
 	}
 	
+	public AccionPK(){}
+	
 	
 	public int getNumInventario(){
 		return numInventario;		

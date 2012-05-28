@@ -35,11 +35,13 @@ public class EntitySingleSelector<T> extends JComboBox implements TableCellRende
 		
 	}
 	
-	public void setSelected(Object value){
-		for(int i=0; i<getItemCount(); i++){
-			if(value == getItemAt(i)){
-				setSelectedIndex(i);
-				return;
+	public void setSelected(IEntity value){
+		if(value != null){
+			for(int i=0; i<getItemCount(); i++){
+				if(value.compareTo( (IEntity)(getItemAt(i)))==0){
+					setSelectedIndex(i);
+					return;
+				}
 			}
 		}
 		
@@ -49,6 +51,7 @@ public class EntitySingleSelector<T> extends JComboBox implements TableCellRende
 	public Component getTableCellRendererComponent(JTable table, Object value,
 			boolean isSelected, boolean hasFocus, int row, int column) {
 		// TODO Auto-generated method stub
+		setSelected((IEntity) value);
 		return this;
 	}
 	

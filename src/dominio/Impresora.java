@@ -45,4 +45,9 @@ public class Impresora extends Dispositivo {
 	}
 	
 
+	@Override
+	public String toString(){
+		return "I" + getNumInventario();		
+	}
+	
 }

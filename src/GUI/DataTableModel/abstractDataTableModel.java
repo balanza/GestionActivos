@@ -65,10 +65,11 @@ public abstract class abstractDataTableModel<T> extends DefaultTableModel implem
 		if(isValid(record)){
 			if(((IEntity)record).getId() == 0){
 				dao.create(record);
-				setValueAt(((IEntity)record).getId(), row, 0);
+				
 			}else{
 				dao.update(record);
 			}
+			setValueAt(((IEntity)record).getId(), row, 0);
 			cleanRow(row);	
 		}
 		

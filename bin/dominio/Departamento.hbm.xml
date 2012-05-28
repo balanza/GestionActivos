@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Apr 2, 2012 6:38:13 PM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="dominio.Departamento" table="DEPARTAMENTO">
+    <class name="dominio.Departamento" table="DEPARTAMENTO" lazy="false">
         <id name="codigo" type="int">
             <column name="CODIGO" />
             <generator class="increment" />

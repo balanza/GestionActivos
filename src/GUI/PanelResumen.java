@@ -62,7 +62,7 @@ public class PanelResumen<T> extends PanelData<T> {
 	private JButton saveAllButton;
 	private JButton delButton;
 	private JButton refreshButton;
-	private abstractDAO dao;
+	protected abstractDAO dao;
 
 		
 
@@ -125,7 +125,7 @@ public class PanelResumen<T> extends PanelData<T> {
 				});
 			}
 			//toolbar.add(new JSeparator());
-			{
+			/*{
 				delButton = new JButton("borrar");
 				toolbar.add(delButton);
 				delButton.setName("delButton");
@@ -137,7 +137,7 @@ public class PanelResumen<T> extends PanelData<T> {
 						model.fireTableDataChanged();
 					}
 				});
-			}
+			}*/
 			//toolbar.add(new JSeparator());
 			{
 				refreshButton = new JButton("actualizar");

@@ -33,19 +33,19 @@ public class CalendarCellEditor extends AbstractCellEditor
 	public Component getTableCellEditorComponent(JTable table, Object value,
 			boolean isSelected, int row, int column) {
 		
-		Date d = null;
+		Date d;
 		
 		try {
-			SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmssZ");
-			d = df.parse((String)value);
+			d = (Date)value;
 		} catch (Exception ignore) {
+			d = null;
 		}
 		
 
 		
 		if(d != null){
 			component.setDate(d);
-			table.setValueAt((String)value, row, column);
+			table.setValueAt(d, row, column);
 		}
 		
 		

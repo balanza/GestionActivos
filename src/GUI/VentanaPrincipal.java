@@ -14,6 +14,7 @@ import dominio.*;
 
 import DAO.AccionDAO;
 import DAO.DispositivoDAO;
+import DAO.OrdenadorDAO;
 import GUI.DataTableModel.*;
 
 import javax.swing.*;
@@ -34,10 +35,11 @@ import javax.swing.*;
 public class VentanaPrincipal extends JFrame {
 	private JMenuBar jMenuBar1;
 	private JMenuItem ordenadoresListMenuItem;
-	private JMenuItem ordenadoresInstalacionMenuItem;
-	private JMenuItem ordenadoresBajaMenuItem;
-	private JMenuItem ordenadoresReparacionMenuItem;
-	private JMenuItem ordenadoresCambioDestinoMenuItem;
+	private JMenuItem ordenadoresAmpliacionMenuItem;
+	//private JMenuItem ordenadoresInstalacionMenuItem;
+	private JMenuItem dispositivosBajaMenuItem;
+	private JMenuItem dispositivosReparacionMenuItem;
+	private JMenuItem dispositivosCambioDestinoMenuItem;
 	private JMenu empresasMenu;
 	private JMenuItem empresasListMenuItem;
 	private JMenu impresorasMenu;
@@ -68,6 +70,7 @@ public class VentanaPrincipal extends JFrame {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			{
+				this.setLayout(new BorderLayout());
 				contentPanel = new JPanel();
 				getContentPane().add(contentPanel, BorderLayout.CENTER);
 			}
@@ -97,10 +100,10 @@ public class VentanaPrincipal extends JFrame {
 					
 					}
 					{
-						ordenadoresBajaMenuItem = new JMenuItem("baja");
-						ordenadoresMenu.add(ordenadoresBajaMenuItem);
-						ordenadoresBajaMenuItem.setName("ordenadoresBajaMenu");
-						ordenadoresBajaMenuItem.addActionListener(new java.awt.event.ActionListener() {
+						dispositivosBajaMenuItem = new JMenuItem("baja");
+						ordenadoresMenu.add(dispositivosBajaMenuItem);
+						dispositivosBajaMenuItem.setName("ordenadoresBajaMenu");
+						dispositivosBajaMenuItem.addActionListener(new java.awt.event.ActionListener() {
 						public void actionPerformed(java.awt.event.ActionEvent e){
 									//load a resume frame into the content panel
 							try{
@@ -113,8 +116,68 @@ public class VentanaPrincipal extends JFrame {
 							} 
 							}
 						});
+						
 					
 					}
+					
+					{
+						ordenadoresAmpliacionMenuItem = new JMenuItem("ampliacion");
+						ordenadoresMenu.add(ordenadoresAmpliacionMenuItem);
+						ordenadoresAmpliacionMenuItem.setName("ordenadoresAmpliacionMenu");
+						ordenadoresAmpliacionMenuItem.addActionListener(new java.awt.event.ActionListener() {
+							public void actionPerformed(java.awt.event.ActionEvent e){
+										//load a resume frame into the content panel
+								try{
+									
+									AccionAmpliacionPanelResumen  v = new AccionAmpliacionPanelResumen(new OrdenadorDAO());
+										switchPanel(v);
+										setTitle("Ampliacion de equipo de los ordenadores");
+								} catch(Exception ex){
+									ex.printStackTrace();
+								} 
+								}
+							});
+					
+					}
+					{
+						dispositivosReparacionMenuItem = new JMenuItem("reparacion");
+						ordenadoresMenu.add(dispositivosReparacionMenuItem);
+						dispositivosReparacionMenuItem.setName("ordenadoresReparacionMenu");
+						dispositivosReparacionMenuItem.addActionListener(new java.awt.event.ActionListener() {
+							public void actionPerformed(java.awt.event.ActionEvent e){
+										//load a resume frame into the content panel
+								try{
+									
+									AccionReparacionPanelResumen  v = new AccionReparacionPanelResumen(new DispositivoDAO());
+										switchPanel(v);
+										setTitle("Reparaciones de dispositivos");
+								} catch(Exception ex){
+									ex.printStackTrace();
+								} 
+								}
+							});
+					
+					}
+					{
+						dispositivosCambioDestinoMenuItem = new JMenuItem("cambio destino");
+						ordenadoresMenu.add(dispositivosCambioDestinoMenuItem);
+						dispositivosCambioDestinoMenuItem.setName("ordenadoresCambioDestinoMenu");
+						dispositivosCambioDestinoMenuItem.addActionListener(new java.awt.event.ActionListener() {
+							public void actionPerformed(java.awt.event.ActionEvent e){
+										//load a resume frame into the content panel
+								try{
+									
+									AccionCambioDestinoPanelResumen  v = new AccionCambioDestinoPanelResumen(new DispositivoDAO());
+										switchPanel(v);
+										setTitle("Cambio de destino de dispositivos");
+								} catch(Exception ex){
+									ex.printStackTrace();
+								} 
+								}
+							});
+					
+					}
+					
 				}
 				{
 					impresorasMenu = new JMenu("Impresoras");
@@ -132,6 +195,67 @@ public class VentanaPrincipal extends JFrame {
 							}
 						});
 				}
+					
+
+					{
+						dispositivosBajaMenuItem = new JMenuItem("baja");
+						impresorasMenu.add(dispositivosBajaMenuItem);
+						dispositivosBajaMenuItem.setName("dispositivosBajaMenu");
+						dispositivosBajaMenuItem.addActionListener(new java.awt.event.ActionListener() {
+						public void actionPerformed(java.awt.event.ActionEvent e){
+									//load a resume frame into the content panel
+							try{
+								
+									AccionBajaPanelResumen  v = new AccionBajaPanelResumen(new DispositivoDAO());
+									switchPanel(v);
+									setTitle("Bajas de dispositivos");
+							} catch(Exception ex){
+								ex.printStackTrace();
+							} 
+							}
+						});
+						
+					
+					}
+					
+					{
+						dispositivosReparacionMenuItem = new JMenuItem("reparacion");
+						impresorasMenu.add(dispositivosReparacionMenuItem);
+						dispositivosReparacionMenuItem.setName("dispositivosReparacionMenu");
+						dispositivosReparacionMenuItem.addActionListener(new java.awt.event.ActionListener() {
+							public void actionPerformed(java.awt.event.ActionEvent e){
+										//load a resume frame into the content panel
+								try{
+									
+									AccionReparacionPanelResumen  v = new AccionReparacionPanelResumen(new DispositivoDAO());
+										switchPanel(v);
+										setTitle("Reparaciones de dispositivos");
+								} catch(Exception ex){
+									ex.printStackTrace();
+								} 
+								}
+							});
+					
+					}
+					{
+						dispositivosCambioDestinoMenuItem = new JMenuItem("cambio destino");
+						impresorasMenu.add(dispositivosCambioDestinoMenuItem);
+						dispositivosCambioDestinoMenuItem.setName("dispositivosCambioDestinoMenu");
+						dispositivosCambioDestinoMenuItem.addActionListener(new java.awt.event.ActionListener() {
+							public void actionPerformed(java.awt.event.ActionEvent e){
+										//load a resume frame into the content panel
+								try{
+									
+									AccionCambioDestinoPanelResumen  v = new AccionCambioDestinoPanelResumen(new DispositivoDAO());
+										switchPanel(v);
+										setTitle("Cambio de destino de dispositivos");
+								} catch(Exception ex){
+									ex.printStackTrace();
+								} 
+								}
+							});
+					
+					}
 				{
 					empresasMenu = new JMenu("Empresas");
 					jMenuBar1.add(empresasMenu);
@@ -282,6 +406,7 @@ public class VentanaPrincipal extends JFrame {
 		if(oldpanel != null){			
 		contentPanel.remove(oldpanel);
 		}
+		contentPanel.setLayout(new BorderLayout());
 		contentPanel.add(newpanel,BorderLayout.CENTER);
 		oldpanel=newpanel;
 		pack();

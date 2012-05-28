@@ -6,6 +6,8 @@ import javax.swing.AbstractCellEditor;
 import javax.swing.JTable;
 import javax.swing.table.TableCellEditor;
 
+import persistence.IEntity;
+
 import DAO.abstractDAO;
 
 public class EntitySingleSelectorCellEditor<T> extends AbstractCellEditor
@@ -28,7 +30,7 @@ public class EntitySingleSelectorCellEditor<T> extends AbstractCellEditor
 			boolean isSelected, int row, int column) {
 		
 		table.setValueAt(value, row, column);
-		component.setSelected(value);
+		component.setSelected((IEntity) value);
 		return component;
 		
 	}

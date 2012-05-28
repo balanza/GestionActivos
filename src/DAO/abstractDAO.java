@@ -24,7 +24,7 @@ public abstract class abstractDAO<T> {
              session = UtilityHibernate.getSessionFactory().openSession();
              tx = session.beginTransaction();
              
-             session.save(obj);
+             session.saveOrUpdate(obj);
              
              tx.commit();
              
@@ -44,7 +44,7 @@ public abstract class abstractDAO<T> {
             session = UtilityHibernate.getSessionFactory().openSession();
             tx = session.beginTransaction();
             
-            session.update(obj);
+            session.saveOrUpdate(obj);
             
             tx.commit();
             
@@ -133,6 +133,20 @@ public abstract class abstractDAO<T> {
         return objects;
     }
     
+    public final List query(String hql){
+    	List obj = null;
+        try {
+        	session = UtilityHibernate.getSessionFactory().openSession();
+            Query query = session.createQuery(hql);
+            obj = query.list();
+
+        } catch (HibernateException e) {
+            handleException(e);
+        } 
+        session.close();
+        return obj;
+    }
+    
 
     protected void handleException(HibernateException e) throws DAOExceptions {
         //abortOperation();
@@ -174,6 +188,8 @@ public abstract class abstractDAO<T> {
         	}        	
         }
     }
+    
+    
 
 
 

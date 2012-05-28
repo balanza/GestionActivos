@@ -148,7 +148,7 @@ public abstract class Dispositivo implements IEntity {
 
 	@Override
 	public String getLabel() {
-		return String.format("%d %s %s", getNumSerie(),getMarca(), getModelo()) ;
+		return String.format("%s %s %s", getNumSerie(),getMarca(), getModelo()) ;
 	}
 	
 

@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated May 17, 2012 3:28:17 AM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="dominio.Accion" table="ACCION">
+    <class name="dominio.Accion" table="ACCION" lazy="false">
         <composite-id name="primaryKey">
 			<key-property name="numInventario" column="NUMINVENTARIO" />
 			<key-property name="numSecuencia" column="NUMSECUENCIA" />
@@ -16,7 +16,7 @@
             <column name="DESCRIPCION" />
         </property>
         
-        <joined-subclass name="dominio.AccionBaja" table="BAJA">
+        <joined-subclass name="dominio.AccionBaja" table="ACCIONBAJA">
         	<key>
       			<column name="NUMINVENTARIO"/>
       			<column name="NUMSECUENCIA"/>
@@ -27,7 +27,7 @@
        		</property>	
         </joined-subclass>
                 
-        <joined-subclass name="dominio.Ampliacion" table="AMPLIACION">
+        <joined-subclass name="dominio.AccionAmpliacion" table="ACCIONAMPLIACION">
         	<key>
       			<column name="NUMINVENTARIO"/>
       			<column name="NUMSECUENCIA"/>
@@ -42,7 +42,7 @@
        		</property>	
         </joined-subclass>
         
-        <joined-subclass name="dominio.CambioDestino" table="CAMBIODESTINO">
+        <joined-subclass name="dominio.AccionCambioDestino" table="ACCIONCAMBIODESTINO">
         	<key>
       			<column name="NUMINVENTARIO"/>
       			<column name="NUMSECUENCIA"/>
@@ -64,7 +64,7 @@
         		
         </joined-subclass>
        		
-       	<joined-subclass name="dominio.Reparacion" table="REPARACION">
+       	<joined-subclass name="dominio.AccionReparacion" table="ACCIONREPARACION">
     	   	<key>
       			<column name="NUMINVENTARIO"/>
       			<column name="NUMSECUENCIA"/>
