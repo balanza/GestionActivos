@@ -7,15 +7,19 @@ import org.hibernate.HibernateException;
 import persistence.UtilityHibernate;
 
 import dominio.Accion;
+import dominio.AccionAmpliacion;
 import dominio.AccionBaja;
 import dominio.Dispositivo;
 
 public class AccionDAO<T> extends abstractDAO {
 
-	@Override
-	public T find(Integer id) {
-		return (T) find(Accion.class, id);
+	@Override 
+	public T find(Integer id) { //last one
+		List result = query(String.format("select top 1 * from accion a where a.numinventario = %d order by a.numsecuencia desc",  id));
+		return (T) result.get(0);
 	}
+	
+	
 
 	@Override
 	public List<T> findAll() {
@@ -34,6 +38,9 @@ public class AccionDAO<T> extends abstractDAO {
 			return 0;
 		}
 	}
+
+
+	
 	
 	
 	

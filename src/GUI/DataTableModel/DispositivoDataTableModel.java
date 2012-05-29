@@ -16,7 +16,21 @@ import GUI.components.EntitySingleSelectorCellEditor;
 public abstract class DispositivoDataTableModel<T> extends abstractDataTableModel<T>{
 
 	public DispositivoDataTableModel(String[] columnNames) {
-		super(ArrayUtils.addAll(  new String[]{"NUM INVENTARIO", "DEPARTAMENTO", "EMPRESA", "CONTACTO", "NUM SERIE", "FECHA COMPRA", "FECHA FIN GARANTIA", "FECHA INSTALACION", "IP"}, columnNames));
+		super(ArrayUtils.addAll(  new String[]{"NUM INVENTARIO"
+				, "MARCA"
+				, "MODELO"
+				, "NUM SERIE"
+				, "EMPRESA"
+				, "DEPARTAMENTO"
+				, "CONTACTO"
+				, "FECHA INSTALACION"
+				, "FECHA FIN GARANTIA"
+				, "FECHA COMPRA"
+				, "PRECIO"
+				, "FECHA BAJA"
+				, "IP"
+				, "OBSERVACIONES"
+				, "PRIORIDAD"}, columnNames));
 		
 	
 	}

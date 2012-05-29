@@ -12,7 +12,7 @@ import DAO.*;
 public class SistemaOperativoDataTableModel extends abstractDataTableModel<SistemaOperativo> {
 
 	public SistemaOperativoDataTableModel(){
-		super( new String[]{"ID CONTACTO", "NOMBRE", "VERSION", "DESCRIPCION"});
+		super( new String[]{"ID SISTEMA OPERATIVO", "NOMBRE", "VERSION", "DESCRIPCION"});
 		dao = new SistemaOperativoDAO();
 	}
 	

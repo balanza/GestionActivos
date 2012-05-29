@@ -1,8 +1,11 @@
 package GUI.DataTableModel;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+
+import javassist.bytecode.ConstantAttribute;
 
 import javax.swing.JTable;
 import javax.swing.event.TableModelEvent;
@@ -17,6 +20,9 @@ import DAO.abstractDAO;
 import dominio.Empresa;
 
 public abstract class abstractDataTableModel<T> extends DefaultTableModel implements TableModelListener {
+	
+	public static final Color ERROR_COLOR = new Color(255, 0,0);
+	public static final Color OK_COLOR = new Color(255, 255,255);
 	
 	protected abstractDAO dao;
 	protected ArrayList<Integer> dirtyRows = new ArrayList<Integer>();
@@ -67,9 +73,10 @@ public abstract class abstractDataTableModel<T> extends DefaultTableModel implem
 				dao.create(record);
 				
 			}else{
-				dao.update(record);
+				dao.save(record);
 			}
-			setValueAt(((IEntity)record).getId(), row, 0);
+			refresh();
+			//setValueAt(((IEntity)record).getId(), row, 0);
 			cleanRow(row);	
 		}
 		
@@ -219,4 +226,6 @@ public abstract class abstractDataTableModel<T> extends DefaultTableModel implem
 		
 		}
 	}
+	
+	
 }

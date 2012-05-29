@@ -4,6 +4,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import DAO.AccionBajaDAO;
+
 import persistence.IEntity;
 
 
@@ -14,8 +16,7 @@ public abstract class Dispositivo implements IEntity {
 	Date fechaInstalacion;
 	Date fechaFinGarantia;
 	Date fechaCompra;
-	int prioridad;
-	Date fechaBaja;
+	Prioridad prioridad;
 	String ip = "";
 	String observaciones = "";
 	float precioCompra;
@@ -65,11 +66,11 @@ public abstract class Dispositivo implements IEntity {
 		fechaCompra = d;
 	}
 	
-	public int getPrioridad(){
+	public Prioridad getPrioridad(){
 		return prioridad;
 	}
 	
-	public void setPrioridad(int n){
+	public void setPrioridad(Prioridad n){
 		prioridad = n;
 	}
 	
@@ -104,12 +105,18 @@ public abstract class Dispositivo implements IEntity {
 	}
 	
 	public  Date getFechaBaja(){
-		return null;
-		//TODO: calcolare  
+		AccionBajaDAO dao = new AccionBajaDAO();
+		Date f = null;
+		int sec = 0; 
+		for(AccionBaja a : dao.findAll()){
+			if(a.getPrimaryKey().getNumInventario() == getId() && a.getPrimaryKey().getNumSecuencia() > sec){
+				sec = a.getPrimaryKey().getNumSecuencia();
+				f = a.getFechaBaja();
+			}
+		}
+		return f;
 	}	
-	public  void setFechaBaja(Date d){
-		//TODO: calcolare 
-	}
+	
 	
 	public  PersonaContacto getPersonaContacto(){
 		return this.personaContacto;

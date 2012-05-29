@@ -45,8 +45,14 @@ public class ConfiguracionTipoDataTableModel extends abstractDataTableModel<Conf
 
 			e.setMarca((String)getValueAt(row, 1));
 			e.setModelo((String)getValueAt(row, 2));
-			e.setProcesador((String)getValueAt(row, 3));			
-			e.setRam( (Integer) getValueAt(row, 4));
+			e.setProcesador((String)getValueAt(row, 3));
+			int ram;
+			try{
+				ram = (Integer)getValueAt(row, 4);
+			}catch(Exception ignore){
+				ram = 0;
+			}
+			e.setRam(ram);
 			e.setDiscoMaster((DiscoMaster) getValueAt(row, 5));
 			//TODO: typecheck
 		}

@@ -56,9 +56,14 @@ public class SistemaOperativo implements IEntity {
 	}
 
 	@Override
-	public int compareTo(IEntity arg0) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int compareTo(IEntity e) {
+		if(!(e instanceof SistemaOperativo)){
+			return 1;
+		} else if(getId() > e.getId()){
+			return 1;
+		} else if(getId() < e.getId()){
+			return -1;
+		} else return 0;
 	}
 
 	@Override

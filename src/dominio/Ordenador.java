@@ -11,6 +11,8 @@ public class Ordenador extends Dispositivo{
 	private String procesador;
 	private ConfiguracionTipo configuracion;
 	private Set<Aplicacion> aplicaciones;
+	private String marca;
+	private String modelo;
 	
 	
 	
@@ -48,27 +50,23 @@ public class Ordenador extends Dispositivo{
 	
 	@Override
 	public String getMarca() {
-		if(configuracion != null){
-			return configuracion.getMarca().trim();
-		} else {
-			return "";
-		}
+		return  marca;
+	}
+	
+	@Override
+	public void setMarca(String m) {
+		marca = m;		
 	}
 
 
 	@Override
 	public String getModelo() {
-		if(configuracion != null){
-			return configuracion.getModelo();
-		} else {
-			return "";
-		}
+		return modelo;
 	}
 
 	@Override
 	public void setModelo(String m) {
-		// TODO derivare da ConfiguracionTipo
-		
+		modelo = m;		
 	}
 	
 	public ConfiguracionTipo getConfiguracionTipo(){

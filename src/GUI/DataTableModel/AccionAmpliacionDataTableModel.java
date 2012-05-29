@@ -55,13 +55,13 @@ public class AccionAmpliacionDataTableModel extends abstractDataTableModel<Accio
 			
 			e.setPrimaryKey(pk);
 			e.setFecha((Date)getValueAt(row, 2));
-			int ram;
+			Integer ram;
 			try{
 				ram = Integer.parseInt(((String)getValueAt(row, 3)).trim());
 			}catch(Exception ignore){
-				ram = 0;
+				ram = (Integer)getValueAt(row, 3);
 			}
-			e.setNuevaRam(ram);
+			e.setNuevaRam(ram == null ? 0 : ram);
 			e.setNuevoProcesador((String)getValueAt(row, 4));
 			e.setDescripcion((String)getValueAt(row, 5));
 		}

@@ -16,7 +16,7 @@ import DAO.PersonaContactoDAO;
 public class PersonaContactoDataTableModel extends abstractDataTableModel<PersonaContacto> {
 
 	public PersonaContactoDataTableModel(){
-		super( new String[]{"ID CONTACTO", "NOMBRE"});
+		super( new String[]{"ID CONTACTO", "NOMBRE", "TELEFONO"});
 		dao = new PersonaContactoDAO();
 	}
 	
@@ -30,6 +30,7 @@ public class PersonaContactoDataTableModel extends abstractDataTableModel<Person
 		Vector<Comparable> row = new Vector<Comparable>();
 		row.add(o.getId());
 		row.add(o.getNombre());
+		row.add(o.getTelefono());
 		
 		this.addRow(row);
 	}
@@ -56,6 +57,7 @@ public class PersonaContactoDataTableModel extends abstractDataTableModel<Person
 			}
 
 			e.setNombre((String)getValueAt(row, 1));	
+			e.setTelefono((String)getValueAt(row, 2));	
 		}
 		
 		return e;

@@ -165,36 +165,7 @@ public class PanelResumen<T> extends PanelData<T> {
 	}
 	
 	
-	protected void setRenders(){
-		//set renders
-		/*datatable.setDefaultRenderer(Departamento.class, new EntitySingleSelector<Departamento>(new DepartamentoDAO()));
-		datatable.setDefaultRenderer(Empresa.class, new EntitySingleSelector<Empresa>(new EmpresaDAO()));
-		datatable.setDefaultRenderer(PersonaContacto.class, new EntitySingleSelector<PersonaContacto>(new PersonaContactoDAO()));*/
-		
-		if(datatable.getModel() instanceof DispositivoDataTableModel || datatable.getModel() instanceof OrdenadorDataTableModel || datatable.getModel() instanceof ImpresoraDataTableModel){
-		
-		try {
-			datatable.getColumnModel().getColumn(1).setCellEditor(new EntitySingleSelectorCellEditor<Departamento>(new DepartamentoDAO()));
-			datatable.getColumnModel().getColumn(2).setCellEditor(new EntitySingleSelectorCellEditor<Empresa>(new EmpresaDAO()));
-			datatable.getColumnModel().getColumn(3).setCellEditor(new EntitySingleSelectorCellEditor<PersonaContacto>(new PersonaContactoDAO()));
-			
-			datatable.getColumnModel().getColumn(5).setCellEditor(new CalendarCellEditor());
-			datatable.getColumnModel().getColumn(6).setCellEditor(new CalendarCellEditor());
-			datatable.getColumnModel().getColumn(7).setCellEditor(new CalendarCellEditor());
-			
-		
-			
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		}
-		
-		
-	}
+	protected void setRenders(){}
 	
 
 

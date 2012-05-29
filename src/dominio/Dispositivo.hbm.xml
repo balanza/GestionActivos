@@ -33,6 +33,8 @@
         </property>
         
         
+        <many-to-one name="prioridad" column="ID_PRIORIDAD" lazy="false">
+        </many-to-one>
         
         <many-to-one name="departamento" column="DEPARTAMENTO_CODIGO" not-null="true" lazy="false">
         </many-to-one>
@@ -41,14 +43,16 @@
         <many-to-one name="empresa" column="ID_EMPRESA" not-null="true" lazy="false">
         </many-to-one>
         
-        <joined-subclass name="dominio.Impresora" table="IMPRESORA">
-        	<key column="NUMINVENTARIO"/>
-			<property name="marca" type="java.lang.String">
+        <property name="marca" type="java.lang.String">
         		<column name="MARCA" />
         	</property>
         	<property name="modelo" type="java.lang.String">
         		<column name="MODELO" />
         	</property>
+        
+        <joined-subclass name="dominio.Impresora" table="IMPRESORA">
+        	<key column="NUMINVENTARIO"/>
+			
         </joined-subclass>
         
         

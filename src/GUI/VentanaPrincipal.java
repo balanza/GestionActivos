@@ -189,7 +189,7 @@ public class VentanaPrincipal extends JFrame {
 						impresoraListMenuItem.addActionListener(new java.awt.event.ActionListener() {
 						public void actionPerformed(java.awt.event.ActionEvent e){
 									//load a resume frame into the content panel
-									PanelResumen<Impresora> v = new PanelResumen(new ImpresoraDataTableModel());
+								ImpresoraPanelResumen v = new ImpresoraPanelResumen();
 									switchPanel(v);
 									setTitle("Impresoras");
 							}
