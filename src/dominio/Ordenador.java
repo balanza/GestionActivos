@@ -104,7 +104,7 @@ public class Ordenador extends Dispositivo{
 	
 	@Override
 	public String toString(){
-		return "P" + getNumInventario();		
+		return String.format("P%05d" , getNumInventario());		
 	}
 		
 	

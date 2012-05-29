@@ -70,5 +70,11 @@ public class AccionCambioDestinoDataTableModel extends abstractDataTableModel<Ac
 	public boolean isValid(AccionCambioDestino e){
 		return e.getPrimaryKey() != null && e.getDepartamento() != null && e.getContacto() != null; 
 	}
+	
+
+	@Override
+	public boolean isCellEditable(int row, int cell){
+		return (getValueAt(row, 0)) == null; 
+	}
 
 }

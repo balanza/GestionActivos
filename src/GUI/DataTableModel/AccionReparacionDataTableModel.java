@@ -65,4 +65,10 @@ public class AccionReparacionDataTableModel extends abstractDataTableModel<Accio
 		return e.getPrimaryKey() != null;
 	}
 
+
+	@Override
+	public boolean isCellEditable(int row, int cell){
+		return (getValueAt(row, 0)) == null; 
+	}
+	
 }

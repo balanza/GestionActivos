@@ -1,0 +1,319 @@
+/*C88*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C89*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C90*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C91*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C92*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C93*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C94*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C95*/SET SCHEMA PUBLIC
+create view VIEW_DISPOSITIVO as\u000a\u000aselect d.*, x.tipo, x.ram, x.procesador from \u000a\u000a(select 'Ordenador' as tipo, ram, procesador, numinventario from ordenador \u000aunion\u000aselect 'Impresora' as tipo, 0 as ram, '' as procesador, numinventario from impresora) X\u000a\u000ainner join Dispositivo D on D.numinventario = X.numinventario
+create view view_accionbaja as\u000aselect A.numsecuencia, a.numinventario, a.fecha, a.descripcion, b.fechabaja\u000afrom Accion A inner join AccionBaja B on A.numsecuencia = B.numsecuencia AND A.numinventario = B.numinventario\u000a
+create view view_dispositivo_baja as\u000aselect d.*, b.fechabaja, b.descripcion as descripcionbaja from\u000aview_dispositivo d inner join view_accionbaja b\u000a\u0009on d.numinventario = b.numInventario
+create view view_dispositivo_activo as\u000a\u000aselect * from view_dispositivo d where not exists (select b.numinventario from accionbaja b where b.numinventario = d.numinventario ) 
+/*C96*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C97*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C98*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C99*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C100*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C101*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C102*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C103*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C104*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C105*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C95*/create view view_dispositivo_flat as\u000a\u000aselect d.*, dep.nombre as departamento, pers.nombre as nombrecontacto, pers.telefono as telefonocontacto \u000a\u000afrom view_dispositivo d inner join\u000adepartamento dep on d.departamento_codigo = dep.codigo\u000ainner join personacontacto pers\u000aon pers.id_persona_contacto = d.personacontacto_id_persona_contacto
+drop view view_dispositivo_activo\u000a
+create view view_dispositivo_activo as\u000a\u000aselect * from view_dispositivo_flat d where not exists (select b.numinventario from accionbaja b where b.numinventario = d.numinventario ) 
+/*C106*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C107*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C108*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C109*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C110*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C111*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C112*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C113*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C114*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C117*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C116*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C115*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C118*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C119*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C120*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C121*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C122*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C123*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C124*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C125*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C126*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C95*/DISCONNECT
+/*C127*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C129*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C128*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C130*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C131*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C132*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C134*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C135*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C136*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C137*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C138*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C139*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C142*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C140*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C143*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C141*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C144*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C145*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C147*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C148*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C150*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C151*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C149*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C152*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C153*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C154*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C156*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C157*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C158*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C159*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C160*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C161*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C162*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C163*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C164*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C165*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C166*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C167*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C168*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C169*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C170*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C171*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C172*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C173*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C177*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C174*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C175*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C176*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C178*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C179*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C180*/SET SCHEMA PUBLIC
+INSERT INTO DISPOSITIVO VALUES(7,NULL,'               ','','500.0     ',3,2,3,1,'566       ','2012-05-17','2013-05-04','2012-05-04','HP','C130')
+INSERT INTO IMPRESORA VALUES(7)
+COMMIT
+/*C181*/SET SCHEMA PUBLIC
+DELETE FROM DEPARTAMENTO WHERE CODIGO=2
+INSERT INTO DEPARTAMENTO VALUES(2,'DISCA                                                                                               ')
+COMMIT
+DELETE FROM EMPRESA WHERE ID_EMPRESA=3
+INSERT INTO EMPRESA VALUES(3,'Foxconn                                                                                             ','40, Yellow River Street                                                                             ','555-123123  ','chin-chu-la@foxconn.com                                                                             ','Beijing                                                                                             ')
+COMMIT
+DELETE FROM PERSONACONTACTO WHERE ID_PERSONA_CONTACTO=1
+INSERT INTO PERSONACONTACTO VALUES(1,'Pepe Morales                                                                                        ','902 666 777 ')
+COMMIT
+/*C180*/DELETE FROM DISPOSITIVO WHERE NUMINVENTARIO=5
+INSERT INTO DISPOSITIVO VALUES(5,NULL,'               ','','198.0     ',3,2,1,1,'465465    ','2012-05-23','2012-05-10','2012-05-03','Xerox','inkjet')
+COMMIT
+/*C181*/DELETE FROM DEPARTAMENTO WHERE CODIGO=3
+INSERT INTO DEPARTAMENTO VALUES(3,'Rectorado                                                                                           ')
+COMMIT
+DELETE FROM EMPRESA WHERE ID_EMPRESA=1
+INSERT INTO EMPRESA VALUES(1,'Microsoft                                                                                           ','40, First Avenue                                                                                    ','555-123123  ','sbalmer@microsoft.com                                                                               ','Redmond, CA                                                                                         ')
+COMMIT
+DELETE FROM PERSONACONTACTO WHERE ID_PERSONA_CONTACTO=1
+INSERT INTO PERSONACONTACTO VALUES(1,'Pepe Morales                                                                                        ','902 666 777 ')
+COMMIT
+/*C180*/DELETE FROM DISPOSITIVO WHERE NUMINVENTARIO=6
+INSERT INTO DISPOSITIVO VALUES(6,NULL,'               ','','298.0     ',1,3,1,2,'666       ','2012-05-23','2012-05-10','2012-05-17','Siemens','CP666')
+COMMIT
+/*C181*/DELETE FROM DEPARTAMENTO WHERE CODIGO=2
+INSERT INTO DEPARTAMENTO VALUES(2,'DISCA                                                                                               ')
+COMMIT
+DELETE FROM EMPRESA WHERE ID_EMPRESA=3
+INSERT INTO EMPRESA VALUES(3,'Foxconn                                                                                             ','40, Yellow River Street                                                                             ','555-123123  ','chin-chu-la@foxconn.com                                                                             ','Beijing                                                                                             ')
+COMMIT
+DELETE FROM PERSONACONTACTO WHERE ID_PERSONA_CONTACTO=3
+INSERT INTO PERSONACONTACTO VALUES(3,'Vicent Torres                                                                                       ','902 987 222 ')
+COMMIT
+/*C180*/DELETE FROM DISPOSITIVO WHERE NUMINVENTARIO=7
+INSERT INTO DISPOSITIVO VALUES(7,NULL,'               ','','500.0     ',3,2,3,1,'566       ','2012-05-17','2013-05-04','2012-05-04','HP','C130')
+COMMIT
+INSERT INTO ACCION VALUES(2,5,'2012-05-15',NULL)
+INSERT INTO "ACCIONBAJA" VALUES('2012-05-16',2,5)
+COMMIT
+DISCONNECT
+/*C181*/DISCONNECT
+/*C182*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C183*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C185*/SET SCHEMA PUBLIC
+DELETE FROM DEPARTAMENTO WHERE CODIGO=2
+INSERT INTO DEPARTAMENTO VALUES(2,'DISCA                                                                                               ')
+COMMIT
+DELETE FROM EMPRESA WHERE ID_EMPRESA=2
+INSERT INTO EMPRESA VALUES(2,'Apple                                                                                               ','40, freedom Street                                                                                  ','555-123123  ','sjobs@apple.com                                                                                     ','Cupertino, CA                                                                                       ')
+COMMIT
+DELETE FROM PERSONACONTACTO WHERE ID_PERSONA_CONTACTO=2
+INSERT INTO PERSONACONTACTO VALUES(2,'Francisco Javier Sanchez                                                                            ','902 666 777 ')
+COMMIT
+/*C184*/SET SCHEMA PUBLIC
+INSERT INTO DISPOSITIVO VALUES(8,NULL,'               ','','0.0       ',2,2,2,2,NULL,'2012-05-11','2012-05-18',NULL,'HP','Pavilion')
+INSERT INTO ORDENADOR VALUES(8,1,3,'AMD Athlon                                                                                          ')
+INSERT INTO INSTALACION VALUES(8,'2012-05-29',8)
+INSERT INTO INSTALACION VALUES(8,'2012-05-29',9)
+INSERT INTO INSTALACION VALUES(8,'2012-05-29',6)
+INSERT INTO INSTALACION VALUES(8,'2012-05-29',1)
+INSERT INTO INSTALACION VALUES(8,'2012-05-29',3)
+COMMIT
+/*C185*/DELETE FROM DEPARTAMENTO WHERE CODIGO=2
+INSERT INTO DEPARTAMENTO VALUES(2,'DISCA                                                                                               ')
+COMMIT
+DELETE FROM EMPRESA WHERE ID_EMPRESA=2
+INSERT INTO EMPRESA VALUES(2,'Apple                                                                                               ','40, freedom Street                                                                                  ','555-123123  ','sjobs@apple.com                                                                                     ','Cupertino, CA                                                                                       ')
+COMMIT
+DELETE FROM PERSONACONTACTO WHERE ID_PERSONA_CONTACTO=2
+INSERT INTO PERSONACONTACTO VALUES(2,'Francisco Javier Sanchez                                                                            ','902 666 777 ')
+COMMIT
+/*C184*/DELETE FROM DISPOSITIVO WHERE NUMINVENTARIO=8
+INSERT INTO DISPOSITIVO VALUES(8,NULL,'               ','','0.0       ',2,2,2,2,NULL,'2012-05-11','2012-05-18','2012-05-10','HP','Pavilion')
+DELETE FROM ORDENADOR WHERE NUMINVENTARIO=8
+INSERT INTO ORDENADOR VALUES(8,1,3,NULL)
+COMMIT
+/*C185*/DELETE FROM DEPARTAMENTO WHERE CODIGO=2
+INSERT INTO DEPARTAMENTO VALUES(2,'DISCA                                                                                               ')
+COMMIT
+DELETE FROM EMPRESA WHERE ID_EMPRESA=2
+INSERT INTO EMPRESA VALUES(2,'Apple                                                                                               ','40, freedom Street                                                                                  ','555-123123  ','sjobs@apple.com                                                                                     ','Cupertino, CA                                                                                       ')
+COMMIT
+DELETE FROM PERSONACONTACTO WHERE ID_PERSONA_CONTACTO=2
+INSERT INTO PERSONACONTACTO VALUES(2,'Francisco Javier Sanchez                                                                            ','902 666 777 ')
+COMMIT
+/*C184*/DELETE FROM DISPOSITIVO WHERE NUMINVENTARIO=8
+INSERT INTO DISPOSITIVO VALUES(8,NULL,'               ','','0.0       ',2,2,2,2,NULL,'2012-05-11','2012-05-18','2012-05-10','HP','Pavilion')
+DELETE FROM ORDENADOR WHERE NUMINVENTARIO=8
+INSERT INTO ORDENADOR VALUES(8,1,3,NULL)
+DELETE FROM INSTALACION WHERE NUMINVENTARIO=8 AND FECHAINSTALACION='2012-05-29' AND ID_APLICACION=8
+DELETE FROM INSTALACION WHERE NUMINVENTARIO=8 AND FECHAINSTALACION='2012-05-29' AND ID_APLICACION=9
+DELETE FROM INSTALACION WHERE NUMINVENTARIO=8 AND FECHAINSTALACION='2012-05-29' AND ID_APLICACION=6
+DELETE FROM INSTALACION WHERE NUMINVENTARIO=8 AND FECHAINSTALACION='2012-05-29' AND ID_APLICACION=1
+DELETE FROM INSTALACION WHERE NUMINVENTARIO=8 AND FECHAINSTALACION='2012-05-29' AND ID_APLICACION=3
+INSERT INTO INSTALACION VALUES(8,'2012-05-29',4)
+INSERT INTO INSTALACION VALUES(8,'2012-05-29',9)
+INSERT INTO INSTALACION VALUES(8,'2012-05-29',6)
+INSERT INTO INSTALACION VALUES(8,'2012-05-29',8)
+INSERT INTO INSTALACION VALUES(8,'2012-05-29',3)
+INSERT INTO INSTALACION VALUES(8,'2012-05-29',7)
+INSERT INTO INSTALACION VALUES(8,'2012-05-29',1)
+COMMIT
+INSERT INTO ACCION VALUES(1,8,'2012-05-17',NULL)
+INSERT INTO "ACCIONBAJA" VALUES('2012-05-16',1,8)
+COMMIT
+INSERT INTO APLICACION VALUES(10,'aplicacion                                                                                                                                                                                                                                                     ','7         ')
+COMMIT
+DELETE FROM DISPOSITIVO WHERE NUMINVENTARIO=4
+INSERT INTO DISPOSITIVO VALUES(4,NULL,'               ','','200.0     ',1,3,1,1,NULL,'2012-05-01','2012-05-31','2012-05-05','HP','Pavilion')
+DELETE FROM ORDENADOR WHERE NUMINVENTARIO=4
+INSERT INTO ORDENADOR VALUES(4,1,3,'AMD Athlon                                                                                          ')
+COMMIT
+INSERT INTO ACCION VALUES(1,4,'2012-05-02',NULL)
+INSERT INTO "ACCIONCAMBIODESTINO" VALUES(NULL,NULL,1,4,1,3)
+COMMIT
+/*C187*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C155*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C184*/DISCONNECT
+/*C189*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C188*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C186*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C185*/DISCONNECT

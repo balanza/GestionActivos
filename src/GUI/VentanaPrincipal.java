@@ -16,6 +16,10 @@ import DAO.AccionDAO;
 import DAO.DispositivoDAO;
 import DAO.OrdenadorDAO;
 import GUI.DataTableModel.*;
+import GUI.components.DateReportDialog;
+import GUI.components.DispositivoBajaDateReportDialog;
+import GUI.components.DispositivoFinGaranciaDateReportDialog;
+import GUI.components.DispositivoRenovarDateReportDialog;
 
 import javax.swing.*;
 
@@ -40,6 +44,12 @@ public class VentanaPrincipal extends JFrame {
 	private JMenuItem dispositivosBajaMenuItem;
 	private JMenuItem dispositivosReparacionMenuItem;
 	private JMenuItem dispositivosCambioDestinoMenuItem;
+	private JMenuItem reportBajaMenuItem;
+	private JMenuItem reportRenovarMenuItem;
+	private JMenuItem reportFinGaranciaMenuItem;
+	private JMenuItem reportBajaMenuItem2;
+	private JMenuItem reportRenovarMenuItem2;
+	private JMenuItem reportFinGaranciaMenuItem2;
 	private JMenu empresasMenu;
 	private JMenuItem empresasListMenuItem;
 	private JMenu impresorasMenu;
@@ -177,8 +187,51 @@ public class VentanaPrincipal extends JFrame {
 							});
 					
 					}
+					{
+						reportBajaMenuItem = new JMenuItem("report baja");
+						ordenadoresMenu.add(reportBajaMenuItem);
+						reportBajaMenuItem.setName("reportBajaMenuItem");
+						final JFrame that = this;
+						reportBajaMenuItem.addActionListener(new java.awt.event.ActionListener() {
+							public void actionPerformed(java.awt.event.ActionEvent e){
+										//load a resume frame into the content panel
+								DispositivoBajaDateReportDialog dialog = new DispositivoBajaDateReportDialog(that, "Ordenador");
+								dialog.setVisible(true);
+							}
+						});
+					
+					}
+					{
+						reportRenovarMenuItem = new JMenuItem("report renovar");
+						ordenadoresMenu.add(reportRenovarMenuItem);
+						reportRenovarMenuItem.setName("reportRenovarMenuItem");
+						final JFrame that = this;
+						reportRenovarMenuItem.addActionListener(new java.awt.event.ActionListener() {
+							public void actionPerformed(java.awt.event.ActionEvent e){
+										//load a resume frame into the content panel
+								DispositivoRenovarDateReportDialog dialog = new DispositivoRenovarDateReportDialog(that, "Ordenador");
+								dialog.setVisible(true);
+							}
+						});
+					
+					}
+					{
+						reportFinGaranciaMenuItem = new JMenuItem("report fin garancia");
+						ordenadoresMenu.add(reportFinGaranciaMenuItem);
+						reportFinGaranciaMenuItem.setName("reportFinGaranciaMenuItem");
+						final JFrame that = this;
+						reportFinGaranciaMenuItem.addActionListener(new java.awt.event.ActionListener() {
+							public void actionPerformed(java.awt.event.ActionEvent e){
+										//load a resume frame into the content panel
+								DispositivoFinGaranciaDateReportDialog dialog = new DispositivoFinGaranciaDateReportDialog(that, "Ordenador");
+								dialog.setVisible(true);
+							}
+						});
+					
+					}
 					
 				}
+				
 				{
 					impresorasMenu = new JMenu("Impresoras");
 					jMenuBar1.add(impresorasMenu);
@@ -196,7 +249,7 @@ public class VentanaPrincipal extends JFrame {
 						});
 				}
 					
-
+					
 					{
 						dispositivosBajaMenuItem = new JMenuItem("baja");
 						impresorasMenu.add(dispositivosBajaMenuItem);
@@ -217,6 +270,7 @@ public class VentanaPrincipal extends JFrame {
 						
 					
 					}
+					
 					
 					{
 						dispositivosReparacionMenuItem = new JMenuItem("reparacion");
@@ -256,6 +310,50 @@ public class VentanaPrincipal extends JFrame {
 							});
 					
 					}
+					{
+						reportBajaMenuItem2 = new JMenuItem("report baja");
+						impresorasMenu.add(reportBajaMenuItem2);
+						reportBajaMenuItem2.setName("reportBajaMenuItem2");
+						final JFrame that = this;
+						reportBajaMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+							public void actionPerformed(java.awt.event.ActionEvent e){
+										//load a resume frame into the content panel
+								DispositivoBajaDateReportDialog dialog = new DispositivoBajaDateReportDialog(that, "Impresora");
+								dialog.setVisible(true);
+							}
+						});
+					
+					}
+					{
+						reportRenovarMenuItem2 = new JMenuItem("report renovar");
+						impresorasMenu.add(reportRenovarMenuItem2);
+						reportRenovarMenuItem2.setName("reportRenovarMenuItem2");
+						final JFrame that = this;
+						reportRenovarMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+							public void actionPerformed(java.awt.event.ActionEvent e){
+										//load a resume frame into the content panel
+								DispositivoRenovarDateReportDialog dialog = new DispositivoRenovarDateReportDialog(that, "Impresora");
+								dialog.setVisible(true);
+							}
+						});
+					
+					}
+					{
+						reportFinGaranciaMenuItem2 = new JMenuItem("report fin garancia");
+						impresorasMenu.add(reportFinGaranciaMenuItem2);
+						reportFinGaranciaMenuItem2.setName("reportFinGaranciaMenuItem2");
+						final JFrame that = this;
+						reportFinGaranciaMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+							public void actionPerformed(java.awt.event.ActionEvent e){
+										//load a resume frame into the content panel
+								DispositivoFinGaranciaDateReportDialog dialog = new DispositivoFinGaranciaDateReportDialog(that, "Impresora");
+								dialog.setVisible(true);
+							}
+						});
+					
+					}
+				
+					
 				{
 					empresasMenu = new JMenu("Empresas");
 					jMenuBar1.add(empresasMenu);

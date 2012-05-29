@@ -67,5 +67,11 @@ public class AccionBajaDataTableModel extends abstractDataTableModel<AccionBaja>
 	public boolean isValid(AccionBaja e){
 		return e.getFechaBaja() != null; 
 	}
+	
+
+	@Override
+	public boolean isCellEditable(int row, int cell){
+		return (getValueAt(row, 0)) == null; 
+	}
 
 }

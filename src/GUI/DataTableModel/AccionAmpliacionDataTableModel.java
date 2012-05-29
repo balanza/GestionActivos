@@ -1,5 +1,6 @@
 package GUI.DataTableModel;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Vector;
 
@@ -73,4 +74,9 @@ public class AccionAmpliacionDataTableModel extends abstractDataTableModel<Accio
 		return e.getPrimaryKey() != null && (e.getNuevaRam()>0 || e.getNuevoProcesador().length()>0); 
 	}
 
+	
+	@Override
+	public boolean isCellEditable(int row, int cell){
+		return (getValueAt(row, 0)) == null; 
+	}
 }

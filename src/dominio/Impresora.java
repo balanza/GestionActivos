@@ -47,7 +47,7 @@ public class Impresora extends Dispositivo {
 
 	@Override
 	public String toString(){
-		return "I" + getNumInventario();		
+		return String.format("I%05d" , getNumInventario());			
 	}
 	
 }

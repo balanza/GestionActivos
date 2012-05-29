@@ -34,6 +34,7 @@ import GUI.DataTableModel.ImpresoraDataTableModel;
 import GUI.DataTableModel.OrdenadorDataTableModel;
 import GUI.DataTableModel.abstractDataTableModel;
 import GUI.components.CalendarCellEditor;
+import GUI.components.DateReportDialog;
 import GUI.components.EntitySingleSelector;
 import GUI.components.EntitySingleSelectorCellEditor;
 
@@ -60,7 +61,7 @@ public class PanelResumen<T> extends PanelData<T> {
 	private JButton addButton;
 	private JButton saveButton;
 	private JButton saveAllButton;
-	private JButton delButton;
+	private JButton reportBajaButton;
 	private JButton refreshButton;
 	protected abstractDAO dao;
 
@@ -152,6 +153,8 @@ public class PanelResumen<T> extends PanelData<T> {
 					}
 				});
 			}
+			
+			
 			
 			//customize cell render
 			setRenders();
